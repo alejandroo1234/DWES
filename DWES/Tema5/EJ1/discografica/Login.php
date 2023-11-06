@@ -8,7 +8,7 @@
         if($consulta){
             $tenerUsuario = $consulta->fetch(PDO::FETCH_ASSOC);
             if(password_verify($n_contra,$tenerUsuario['password'])){
-                echo 'Login Correcto';
+                echo 'Login Correcto'; 
                 setcookie('MiCoockieUsuario[0]',$n_usuario,time()+3600);
                 setcookie('MiCoockieUsuario[1]',$n_contra,time()+3600);
             }else{
@@ -25,7 +25,7 @@
             echo '</form>';
             if(isset($_GET['btnSi']) || isset($_GET['btnNo'])){
                 if($_GET['btnSi'] == "Si"){
-                    echo 'Acceso Correcto';
+                    header("Location: ./index.php");
                 }else{
                     setcookie('MiCoockieUsuario[0]',"",time()-3600);
                     setcookie('MiCoockieUsuario[1]',"",time()-3600);
@@ -39,7 +39,7 @@
 
 
     function enseñarLogin(){
-        echo '<h1> FORMULARIO PARA Comprobar Usuarios</h1>';
+        echo '<h1> FORMULARIO PARA entrar en las canciones</h1>';
         echo '<form action="#" method="post">';
 		echo '<label name="usuario">Usuario: </label>';
         echo '<input type="text" required name="usuario" placeholder="" />';
